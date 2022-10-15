@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.MyPage">
+
+    <Grid BackgroundColor="{StaticResource backgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+         <Label Style="{StaticResource header}"
+                Text="Авторизация"
+                Grid.Column="1"
+                Grid.Row="1"/>
+        <Image Source="logoPolyus.png"
+               Grid.Row="2"
+               Grid.Column="1"/>
+         <Entry Style="{StaticResource entryStyle}"
+                Placeholder="Логин"
+                Grid.Row="3"
+                    Grid.Column="1"
+                VerticalOptions="Center"/>
+         <Entry Style="{StaticResource entryStyle}"
+                Placeholder="Пароль"
+                IsPassword="True"
+                Grid.Row="4"
+                Grid.Column="1"/>
+         
+        <Button Text="Войти"
+                Grid.Column="1"
+                CornerRadius="30"
+                Grid.Row="6"
+                TextColor="Black"
+                FontSize="19"
+                BackgroundColor="Orange"
+                Clicked="Button_Clicked"/>
+
+    </Grid>
+</ContentPage>
+

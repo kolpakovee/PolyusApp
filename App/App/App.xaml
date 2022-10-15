@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="backgroundColor">#FFC920</Color>
+            <x:Double x:Key="fontSize">22</x:Double>
+            <Style TargetType="Label" x:Key="header">
+              <Setter Property="TextColor" Value="Black"/>
+              <Setter Property="FontSize" Value="34"/>
+              <Setter Property="FontAttributes" Value="Bold" />
+              <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Label" x:Key="inputText">
+              <Setter Property="TextColor" Value="#C4C4C4"/>
+              <Setter Property="FontSize" Value="17"/>
+              <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Button" x:Key="button">
+              <Setter Property="TextColor" Value="Black"/>
+              <Setter Property="FontSize" Value="17"/>
+              <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BackgroundColor" Value="White" />
+               
+              <Setter Property="HorizontalOptions" Value="Fill"/>
+            </Style>
+            <Style TargetType="Entry" x:Key="entryStyle">
+             <Setter Property="PlaceholderColor" Value="Gray"/>
+             <Setter Property="FontSize" Value="17"/>
+            <Setter Property= "HorizontalOptions" Value="Fill"/> 
+             <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="frameForEntry">
+            
+              
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

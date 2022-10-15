@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.MainPage"
+             BackgroundColor="White">
+    <RefreshView Refreshing="RefreshView_Refreshing"
+                 x:Name="refreshView"
+                 RefreshColor="Black">
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.03*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.9*"/>
+            <ColumnDefinition Width="0.05*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Активные заявки"
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Style="{StaticResource header}"
+               TextColor="Black"/>
+        <StackLayout Grid.Row="2"
+                     Grid.ColumnSpan="3">
+            <CollectionView ItemsSource="{Binding Requests}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height=".2*"/>
+                            </Grid.RowDefinitions>
+                                <Image Grid.Column="0"
+                                       Grid.Row="1"
+                                       Source="{Binding Urgency.Source}"
+                                       HeightRequest="60"
+                                       WidthRequest="60"/>
+                                <StackLayout Grid.Column="1"
+                                             Grid.Row="1"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding FIO}"
+                                       FontAttributes="Bold"/>
+                                    <Label 
+                                       Text="{Binding Adress}"/>
+                                </StackLayout>
+                            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <Button Grid.Column="0"
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            Text="Завершить смену"
+            Clicked="Button_Clicked"
+            BackgroundColor="#FFC920"
+            TextColor="Black"/>
+    </Grid>
+    </RefreshView>
+</ContentPage>
+

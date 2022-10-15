@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.HelpPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Switch Grid.Row="1" x:Name="sw"
+                IsToggled="False"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Toggled="Switch_Toggled"/>
+        <Label Text="Начать смену?"
+               Grid.Row="2"
+               HorizontalOptions="Center"
+               Style="{StaticResource header}"/>
+    </Grid>
+</ContentPage>
+
