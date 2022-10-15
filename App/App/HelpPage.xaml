@@ -3,22 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.HelpPage">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Switch Grid.Row="1" x:Name="sw"
+    <StackLayout VerticalOptions="Center">
+        <Switch x:Name="sw"
                 IsToggled="False"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
                 Toggled="Switch_Toggled"/>
         <Label Text="Начать смену?"
-               Grid.Row="2"
                HorizontalOptions="Center"
+               VerticalOptions="Center"
                Style="{StaticResource header}"/>
-    </Grid>
+    </StackLayout>
 </ContentPage>
 

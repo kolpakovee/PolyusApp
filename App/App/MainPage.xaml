@@ -51,8 +51,10 @@
                                              HorizontalOptions="Start"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding FIO}"
+                                       TextColor="Black"
                                        FontAttributes="Bold"/>
-                                    <Label 
+                                    <Label
+                                       TextColor="Black"
                                        Text="{Binding Adress}"/>
                                 </StackLayout>
                             </Grid>
