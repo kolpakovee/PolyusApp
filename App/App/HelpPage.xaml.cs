@@ -22,8 +22,6 @@ namespace App
             }
             else
             {
-                (double, double) location = await MainPage.GetLocation(sender, new EventArgs());
-                await DisplayAlert("Уведомление", $"Отправил ваши координаты {location.Item1} {location.Item2} на сервер", "ОК");
                 await Navigation.PushModalAsync(new MainPage());
             }
         }

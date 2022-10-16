@@ -27,7 +27,6 @@ namespace App
 
         async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            SendCoordinatesToServer();
             await Navigation.PopModalAsync();
         }
 
@@ -65,13 +64,11 @@ namespace App
             DateTime begin = new DateTime(2022, 5, 29);
             DateTime end = new DateTime(2022, 6, 10);
             Requests = new List<Request>();
-            Requests.Add(new Request("Egor", "Kolpakov","Evgenyevich", "Moscow, Tverskaya, 33", "Срочно", begin, end, "+7(987) 777 777", "257"));
-            Requests.Add(new Request("Ivan", "Ivanov", "Ivanovich", "Moscow, Tverskaya, 2/4", "Чрезвычайная ситуация", begin, end, "+7(987) 777 777", "642"));
-            Requests.Add(new Request("Max", "Petrov", "Ruslanovich", "Moscow, Sadovaya, 1", "Совсем не срочно", begin, end, "+7(987) 777 777", "925"));
-            RequestsDictionary = new Dictionary<string, Request>();
-            RequestsDictionary.Add(Requests[0].ID, Requests[0]);
-            RequestsDictionary.Add(Requests[1].ID, Requests[1]);
-            RequestsDictionary.Add(Requests[2].ID, Requests[2]);
+            // должен принимать тут ответ от сервера
+            Requests.Add(new Request("Иван", "Иванов", "Иванович", "Москва, Симферопольская, 2/4", "Чрезвычайная ситуация", begin, end, "+7(987) 573 777", "642"));
+            Requests.Add(new Request("Егор", "Колпаков","Евгеньевич", "Москва, Тверская, 33", "Срочно", begin, end, "+7(987) 777 123", "257"));
+            Requests.Add(new Request("Евгений", "Семёнов", "Александрович", "Нижний Новгород, Новгородская, 1", "Не очень срочно", begin, end, "+7(999) 777 111", "472"));
+            Requests.Add(new Request("Максим", "Петров", "Русланович", "Москва, Садовая, 1", "Совсем не срочно", begin, end, "+7(999) 777 111", "925"));
             BindingContext = this;
             base.OnAppearing();
         }
@@ -82,12 +79,6 @@ namespace App
             bool b = await DisplayAlert($"Заявка #{r.ID}", $"Вы хотите выполнить заявку?\n\n{r.GetInfo()}", "Да", "Нет");
             if (b)
             {
-                foreach(var el in Requests)
-                {
-                    if (el.ID == r.ID)
-                        el.color = Xamarin.Forms.Color.LightGreen; 
-                }
-                
                 //Dictionary<string, string> dict = new Dictionary<string, string>()
                 //{
                 //    { location.Item1.ToString(), location.Item2.ToString()}
@@ -99,7 +90,7 @@ namespace App
                 //string result = await response.Content.ReadAsStringAsync(); // считывание результата
             }
         }
-
+        // Лента обновления
         async void RefreshView_Refreshing(System.Object sender, System.EventArgs e)
         {
             await Task.Delay(3000);
@@ -107,6 +98,7 @@ namespace App
             refreshView.IsRefreshing = false;
         }
 
+        // Метод, имитирующий отправку координат
         async void SendCoordinatesToServer()
         {
             (double, double) location = await MainPage.GetLocation(new Object(), new EventArgs());
