@@ -13,6 +13,7 @@ namespace App
         public string UrgencyStatus { get; set; }
         string Number { get; set; }
         public string ID { get;set; }
+        public Color color { get; set; }
 
         public Request(string name, string surname, string patronymic, string adress, string urgency, DateTime begin,
             DateTime end, string number, string id)
@@ -25,6 +26,7 @@ namespace App
             BeginDate = begin;
             EndDate = end;
             ID = id;
+            color = Color.White;
             // switch (urgency) { }
             if (urgency == "Совсем не срочно")
                 Urgency.Source = "image4";

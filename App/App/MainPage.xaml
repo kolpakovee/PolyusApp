@@ -28,7 +28,8 @@
                      Grid.ColumnSpan="3">
             <CollectionView ItemsSource="{Binding Requests}"
                             SelectionMode="Single"
-                            SelectionChanged="OnSelectionChanged">
+                            SelectionChanged="OnSelectionChanged"
+                            x:Name="cv">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>

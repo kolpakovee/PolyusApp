@@ -8,6 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Drawing;
+using System.Threading;
+using Point = Xamarin.Forms.Point;
 
 namespace App
 {
@@ -16,7 +19,7 @@ namespace App
         public IList<Request> Requests { get; set; }
         public Dictionary<string, Request> RequestsDictionary { get; set; }
         private static readonly HttpClient client = new HttpClient();
-        private readonly string url = "123";
+        private readonly string url = "";
         public MainPage()
         {
             InitializeComponent();
@@ -24,10 +27,11 @@ namespace App
 
         async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
+            SendCoordinatesToServer();
             await Navigation.PopModalAsync();
         }
 
-        async Task<(double,double)> GetLocation(System.Object sender, System.EventArgs e)
+        public async static Task<(double,double)> GetLocation(System.Object sender, System.EventArgs e)
         {
             try
             {
@@ -78,7 +82,12 @@ namespace App
             bool b = await DisplayAlert($"Заявка #{r.ID}", $"Вы хотите выполнить заявку?\n\n{r.GetInfo()}", "Да", "Нет");
             if (b)
             {
-                (double, double) location = await GetLocation(sender, new EventArgs());
+                foreach(var el in Requests)
+                {
+                    if (el.ID == r.ID)
+                        el.color = Xamarin.Forms.Color.LightGreen; 
+                }
+                
                 //Dictionary<string, string> dict = new Dictionary<string, string>()
                 //{
                 //    { location.Item1.ToString(), location.Item2.ToString()}
@@ -97,6 +106,14 @@ namespace App
             Debug.WriteLine("Updated!");
             refreshView.IsRefreshing = false;
         }
+
+        async void SendCoordinatesToServer()
+        {
+            (double, double) location = await MainPage.GetLocation(new Object(), new EventArgs());
+            await DisplayAlert("Уведомление", $"Отправил ваши координаты {location.Item1} {location.Item2} на сервер", "ОК");
+        }
+
+
     }
 }
 
